@@ -17,10 +17,14 @@ document.querySelector('#search-button').onclick = (e) => {
 
 //Toggle class active untuk shopping cart
 const shoppingCart = document.querySelector(".shopping-cart");
-document.querySelector("#shopping-cart-button").onclik = (e) => {
-    shoppingCart.classList.toggle('active');
+document
+  .querySelector("#shopping-cart-button")
+  .addEventListener("click", function (e) {
+    shoppingCart.classList.toggle("active");
     e.preventDefault();
-}
+  });
+
+
 //Klik diluar elemen
 const hm = document.querySelector('#hamburger-menu');
 const sb = document.querySelector('#search-button');
