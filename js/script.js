@@ -41,3 +41,30 @@ document.addEventListener('click', function(e) {
          shoppingCart.classList.remove("active");
     }
 });
+
+//Contact From
+const scriptURL = "https://script.google.com/macros/s/AKfycbzmN5sGsJ0e_ejG0TBlx0y51yzN_iObFb5eh4S8BCNJqA44fKqYlV-jAA-MrWflyA3tBQ/exec"
+const form = document.forms["Company Sheet"];
+const btnSubmit = document.querySelector(".btn-submit");
+const btnLoading = document.querySelector(".btn-loading");
+const myAlert = document.querySelector(".alert");
+      
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  //ketika tombol submit diklik
+  //tampilkan tombol loading, hilangkan tobmol kirim
+  btnLoading.classList.toggle("d-none");
+  btnSubmit.classListt.toggle("d-none");
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then((response) => {
+    //tampilkan tombol kirim, hilangkan tombol loading 
+    btnLoading.classList.toggle("d-none");
+    btnSubmit.classList.toggle("d-none");
+    //tampilkan alert
+    myAlert.classList.toggle("d-none");
+    //reset formnya 
+    form.reset ();
+    console.log('Success!', response);
+   })
+    .catch((error) => console.error('Error!', error.message));
+});
